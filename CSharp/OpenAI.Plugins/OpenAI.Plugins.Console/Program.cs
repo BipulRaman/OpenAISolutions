@@ -14,9 +14,13 @@ public static class Program
 
         var openAiTextHelper = StartupHelper.GetService<ITextHelper>(services);
         var similarityCalculator = StartupHelper.GetService<ISimilarityCalculator>(services);
+
+        // Example of getting text generation.
         string result = await openAiTextHelper.GetTextCompletionAsync("Where is the capital of England?").ConfigureAwait(false);
         Console.WriteLine(result);
 
+
+        // Example of calculating cosine similarity of texts.
         List<float> embedding1 = await openAiTextHelper.GetEmbeddingAsync("Hello World").ConfigureAwait(false);
         List<float> embedding2 = await openAiTextHelper.GetEmbeddingAsync("Hello Earth").ConfigureAwait(false);
 
