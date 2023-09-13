@@ -1,4 +1,4 @@
-﻿namespace OpenAI.Plugins.Helper.Models;
+﻿namespace OpenAI.Plugins.AzureOpenAIHelper.Models;
 
 /// <summary>
 /// Represents the configuration required to access OpenAI API.

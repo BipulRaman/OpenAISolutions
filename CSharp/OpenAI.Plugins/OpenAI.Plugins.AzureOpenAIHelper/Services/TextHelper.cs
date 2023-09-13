@@ -1,11 +1,11 @@
-﻿namespace OpenAI.Plugins.Helper.Services;
+﻿namespace OpenAI.Plugins.AzureOpenAIHelper.Services;
 
 using Azure;
 using Azure.AI.OpenAI;
 using Microsoft.Extensions.Azure;
 using Microsoft.Extensions.Options;
-using OpenAI.Plugins.Helper.Abstractions;
-using OpenAI.Plugins.Helper.Models;
+using OpenAI.Plugins.AzureOpenAIHelper.Abstractions;
+using OpenAI.Plugins.AzureOpenAIHelper.Models;
 
 /// <summary>
 /// Helper class for working with text-related functionality using OpenAI APIs.

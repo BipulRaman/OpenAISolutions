@@ -1,7 +1,7 @@
 ﻿namespace OpenAI.Plugins.Console;
 
 using Microsoft.Extensions.DependencyInjection;
-using OpenAI.Plugins.Helper.Abstractions;
+using OpenAI.Plugins.AzureOpenAIHelper.Abstractions;
 using System;
 
 public static class Program

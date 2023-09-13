@@ -1,12 +1,12 @@
-﻿namespace OpenAI.Plugins.Helper;
+﻿namespace OpenAI.Plugins.AzureOpenAIHelper;
 
 using Azure;
 using Microsoft.Extensions.Azure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OpenAI.Plugins.Helper.Abstractions;
-using OpenAI.Plugins.Helper.Models;
-using OpenAI.Plugins.Helper.Services;
+using OpenAI.Plugins.AzureOpenAIHelper.Abstractions;
+using OpenAI.Plugins.AzureOpenAIHelper.Services;
+using OpenAI.Plugins.AzureOpenAIHelper.Models;
 
 /// <summary>
 /// Provides extension methods to register OpenAI plugins helper services in the dependency injection container.
@@ -30,6 +30,7 @@ public static class ServiceCollectionExtension
             options.Endpoint = openAIConfiguration.Endpoint;
         });
         _ = services.AddOpenAIClient(openAIConfiguration);
+        _ = services.AddSingleton<ISimilarityCalculator, SimilarityCalculator>();
         _ = services.AddSingleton<ITextHelper, TextHelper>();
 
         return services;

@@ -1,4 +1,4 @@
-﻿namespace OpenAI.Plugins.Helper.Abstractions;
+﻿namespace OpenAI.Plugins.AzureOpenAIHelper.Abstractions;
 
 using Azure.AI.OpenAI;
 

@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OpenAI.Plugins.Helper;
+using OpenAI.Plugins.AzureOpenAIHelper;
 
 /// <summary>
 /// A helper class for building and retrieving services for OpenAI.Plugins.Console.
