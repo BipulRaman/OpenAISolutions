@@ -4,9 +4,9 @@ namespace OpenAI.Plugins.AzureOpenAIHelper.Services;
 
 public class SimilarityCalculator : ISimilarityCalculator
 {
-    public double CalculateCosimeSimilarity(double[] embedding1, double[] embedding2)
+    public double CalculateCosimeSimilarity(List<float> embedding1, List<float> embedding2)
     {
-        if (embedding1.Length != embedding2.Length)
+        if (embedding1.Count != embedding2.Count)
         {
             return 0;
         }
@@ -15,7 +15,7 @@ public class SimilarityCalculator : ISimilarityCalculator
         double magnitude1 = 0.0;
         double magnitude2 = 0.0;
 
-        for (int i = 0; i < embedding1.Length; i++)
+        for (int i = 0; i < embedding1.Count; i++)
         {
             dotProduct += embedding1[i] * embedding2[i];
             magnitude1 += Math.Pow(embedding1[i], 2);
@@ -36,7 +36,7 @@ public class SimilarityCalculator : ISimilarityCalculator
         return cosineSimilarity;
     }
 
-    public double CalculateCosineDistance(double[] embedding1, double[] embedding2)
+    public double CalculateCosineDistance(List<float> embedding1, List<float> embedding2)
     {
         double cosineSimilarity = CalculateCosimeSimilarity(embedding1, embedding2);
         double cosineDistance = 1 - cosineSimilarity;

@@ -2,7 +2,7 @@
 
 public interface ISimilarityCalculator
 {
-    double CalculateCosimeSimilarity(double[] embedding1, double[] embedding2);
+    double CalculateCosimeSimilarity(List<float> embedding1, List<float> embedding2);
 
-    double CalculateCosineDistance(double[] embedding1, double[] embedding2);
+    double CalculateCosineDistance(List<float> embedding1, List<float> embedding2);
 }

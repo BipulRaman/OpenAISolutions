@@ -13,7 +13,14 @@ public static class Program
         ServiceCollection services = StartupHelper.BuildServices();
 
         var openAiTextHelper = StartupHelper.GetService<ITextHelper>(services);
-        var result = await openAiTextHelper.GetTextCompletionAsync("Where is the capital of England?").ConfigureAwait(false);
-        var embeddings = await openAiTextHelper.GetEmbeddingAsync("Hello World").ConfigureAwait(false);
+        var similarityCalculator = StartupHelper.GetService<ISimilarityCalculator>(services);
+        string result = await openAiTextHelper.GetTextCompletionAsync("Where is the capital of England?").ConfigureAwait(false);
+        Console.WriteLine(result);
+
+        List<float> embedding1 = await openAiTextHelper.GetEmbeddingAsync("Hello World").ConfigureAwait(false);
+        List<float> embedding2 = await openAiTextHelper.GetEmbeddingAsync("Hello Earth").ConfigureAwait(false);
+
+        double similarityScore = similarityCalculator.CalculateCosimeSimilarity(embedding1, embedding2);
+        Console.WriteLine($"Similarity score of texts: {similarityScore}");
     }
 }
