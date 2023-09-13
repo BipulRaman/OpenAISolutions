@@ -7,7 +7,6 @@ Welcome to the OpenAI Solutions Practice Repository! This repository is a collec
 - [Introduction](#introduction)
 - [Getting Started](#getting-started)
 - [Code Examples](#code-examples)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Introduction
