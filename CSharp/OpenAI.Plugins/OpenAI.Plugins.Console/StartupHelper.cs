@@ -17,7 +17,8 @@ public static class StartupHelper
     {
         IConfigurationBuilder configBuilder = new ConfigurationBuilder()
         .SetBasePath(Directory.GetCurrentDirectory())
-        .AddJsonFile("appsettings.json", optional: true);
+        .AddJsonFile("appsettings.json", optional: true)
+        .AddJsonFile("appsettings.local.json", optional: true);
         IConfiguration configuration = configBuilder.Build();
         ServiceCollection services = new ServiceCollection();
         _ = services.AddOpenAIPluginsHelper(configuration);
