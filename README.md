@@ -38,20 +38,7 @@ The repository includes code examples and projects related to various OpenAI sol
 
 Please refer to the individual solution folders for specific code examples and instructions.
 
-## Contributing
-
-We welcome contributions from the community to make this repository even more valuable for those learning and working with OpenAI solutions. If you'd like to contribute:
-
-1. Fork this repository to your own GitHub account.
-2. Create a new branch with a descriptive name for your feature or bug fix.
-3. Commit your changes and push them to your fork.
-4. Open a pull request (PR) to the main repository, describing your changes and the purpose of your PR.
-5. Our team will review your PR, provide feedback, and merge it if it aligns with the goals of the repository.
-
-Please ensure your contributions follow the repository's code of conduct.
-
 ## License
-
-This repository is licensed under the MIT License. By contributing to this repository, you agree that your contributions will be licensed under the same MIT License.
+All information contained herein is, and remains the property of BIPUL RAMAN. [LICENSE file](./LICENSE) stored in the root of this repo. 
 
 Happy coding and exploring the world of OpenAI solutions!
