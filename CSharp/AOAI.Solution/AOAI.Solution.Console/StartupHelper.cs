@@ -1,8 +1,8 @@
-﻿namespace OpenAI.Plugins.Console;
+﻿namespace AOAI.Solution.Console;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OpenAI.Plugins.AzureOpenAIHelper;
+using AOAI.Solution.Helper;
 
 /// <summary>
 /// A helper class for building and retrieving services for OpenAI.Plugins.Console.
@@ -21,7 +21,7 @@ public static class StartupHelper
         .AddJsonFile("appsettings.local.json", optional: true);
         IConfiguration configuration = configBuilder.Build();
         ServiceCollection services = new ServiceCollection();
-        _ = services.AddOpenAIPluginsHelper(configuration);
+        _ = services.AddAOAISolutionHelper(configuration);
         _ = services.BuildServiceProvider();
         return services;
     }

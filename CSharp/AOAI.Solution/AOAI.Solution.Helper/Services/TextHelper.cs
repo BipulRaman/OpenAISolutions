@@ -1,11 +1,11 @@
-﻿namespace OpenAI.Plugins.AzureOpenAIHelper.Services;
+﻿namespace AOAI.Solution.Helper.Services;
 
+using AOAI.Solution.Helper.Abstractions;
+using AOAI.Solution.Helper.Models;
 using Azure;
 using Azure.AI.OpenAI;
 using Microsoft.Extensions.Azure;
 using Microsoft.Extensions.Options;
-using OpenAI.Plugins.AzureOpenAIHelper.Abstractions;
-using OpenAI.Plugins.AzureOpenAIHelper.Models;
 
 /// <summary>
 /// Helper class for working with text-related functionality using OpenAI APIs.
@@ -18,7 +18,7 @@ public class TextHelper : ITextHelper
     public TextHelper(IAzureClientFactory<OpenAIClient> azureClientFactory, IOptionsMonitor<OpenAIConfiguration> openAIConfigurationOptions)
     {
         this.azureClientFactory = azureClientFactory;
-        this.openAIConfiguration = openAIConfigurationOptions.CurrentValue;
+        openAIConfiguration = openAIConfigurationOptions.CurrentValue;
     }
 
     /// <inheritdoc/>
@@ -34,8 +34,8 @@ public class TextHelper : ITextHelper
 
         if (!string.IsNullOrWhiteSpace(texts))
         {
-            OpenAIClient openAIClient = this.azureClientFactory.CreateClient(this.openAIConfiguration.EmbeddingModelDeploymentName);
-            Response<Embeddings> output = await openAIClient.GetEmbeddingsAsync(this.openAIConfiguration.EmbeddingModelDeploymentName, embeddingOptions).ConfigureAwait(false);
+            OpenAIClient openAIClient = azureClientFactory.CreateClient(openAIConfiguration.EmbeddingModelDeploymentName);
+            Response<Embeddings> output = await openAIClient.GetEmbeddingsAsync(openAIConfiguration.EmbeddingModelDeploymentName, embeddingOptions).ConfigureAwait(false);
 
             if (output is not null && output.Value.Data is not null)
             {
@@ -57,8 +57,8 @@ public class TextHelper : ITextHelper
             embeddingOptions = new(sanitisedTexts);
         }
 
-        OpenAIClient openAIClient = this.azureClientFactory.CreateClient(this.openAIConfiguration.EmbeddingModelDeploymentName);
-        Response<Embeddings> output = await openAIClient.GetEmbeddingsAsync(this.openAIConfiguration.EmbeddingModelDeploymentName, embeddingOptions).ConfigureAwait(false);
+        OpenAIClient openAIClient = azureClientFactory.CreateClient(openAIConfiguration.EmbeddingModelDeploymentName);
+        Response<Embeddings> output = await openAIClient.GetEmbeddingsAsync(openAIConfiguration.EmbeddingModelDeploymentName, embeddingOptions).ConfigureAwait(false);
 
         if (output is not null && output.Value.Data is not null)
         {
@@ -81,9 +81,9 @@ public class TextHelper : ITextHelper
             };
         }
 
-        OpenAIClient openAIClient = this.azureClientFactory.CreateClient(this.openAIConfiguration.CompletionModelDeploymentName);
+        OpenAIClient openAIClient = azureClientFactory.CreateClient(openAIConfiguration.CompletionModelDeploymentName);
 
-        Response<Completions> completionsResponse = await openAIClient.GetCompletionsAsync(this.openAIConfiguration.CompletionModelDeploymentName, completionsOptions).ConfigureAwait(false);
+        Response<Completions> completionsResponse = await openAIClient.GetCompletionsAsync(openAIConfiguration.CompletionModelDeploymentName, completionsOptions).ConfigureAwait(false);
         string completionText = completionsResponse.Value.Choices[0].Text;
 
         return completionText;

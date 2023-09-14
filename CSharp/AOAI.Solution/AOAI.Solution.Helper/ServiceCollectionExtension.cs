@@ -1,12 +1,13 @@
-﻿namespace OpenAI.Plugins.AzureOpenAIHelper;
+﻿namespace AOAI.Solution.Helper;
 
 using Azure;
 using Microsoft.Extensions.Azure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using OpenAI.Plugins.AzureOpenAIHelper.Abstractions;
-using OpenAI.Plugins.AzureOpenAIHelper.Services;
-using OpenAI.Plugins.AzureOpenAIHelper.Models;
+using AOAI.Solution.Helper;
+using AOAI.Solution.Helper.Services;
+using AOAI.Solution.Helper.Models;
+using AOAI.Solution.Helper.Abstractions;
 
 /// <summary>
 /// Provides extension methods to register OpenAI plugins helper services in the dependency injection container.
@@ -19,7 +20,7 @@ public static class ServiceCollectionExtension
     /// <param name="services">The <see cref="IServiceCollection"/> to add the services to.</param>
     /// <param name="configuration">The <see cref="IConfiguration"/> instance.</param>
     /// <returns>The <see cref="IServiceCollection"/> instance with the added services.</returns>
-    public static IServiceCollection AddOpenAIPluginsHelper(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddAOAISolutionHelper(this IServiceCollection services, IConfiguration configuration)
     {
         OpenAIConfiguration openAIConfiguration = configuration.GetSection(nameof(OpenAIConfiguration)).Get<OpenAIConfiguration>();
         _ = services.Configure<OpenAIConfiguration>(options =>

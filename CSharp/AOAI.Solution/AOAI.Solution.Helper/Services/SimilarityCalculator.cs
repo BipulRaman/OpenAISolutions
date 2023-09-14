@@ -1,6 +1,6 @@
-﻿using OpenAI.Plugins.AzureOpenAIHelper.Abstractions;
+﻿using AOAI.Solution.Helper.Abstractions;
 
-namespace OpenAI.Plugins.AzureOpenAIHelper.Services;
+namespace AOAI.Solution.Helper.Services;
 
 public class SimilarityCalculator : ISimilarityCalculator
 {
