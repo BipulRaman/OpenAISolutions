@@ -350,3 +350,5 @@ MigrationBackup/
 .ionide/
 
 appsettings.local.json
+
+.vscode
