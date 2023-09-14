@@ -9,15 +9,15 @@ using Microsoft.Extensions.Logging;
 
 namespace AOAI.Solution.Functions
 {
-    public class Function1
+    public class Functions
     {
         private readonly ILogger _logger;
-        private readonly ITextHelper textHelper;
+        private readonly ITextHelper _textHelper;
 
-        public Function1(ILoggerFactory loggerFactory, ITextHelper textHelper)
+        public Functions(ILoggerFactory loggerFactory, ITextHelper textHelper)
         {
-            _logger = loggerFactory.CreateLogger<Function1>();
-            this.textHelper = textHelper;
+            this._logger = loggerFactory.CreateLogger<Functions>();
+            this._textHelper = textHelper;
         }
 
         [Function("GetAnswer")]
@@ -30,7 +30,7 @@ namespace AOAI.Solution.Functions
 
             string inputString = await req.ReadAsStringAsync().ConfigureAwait(false);
 
-            string responseString = await textHelper.GetTextCompletionAsync(inputString).ConfigureAwait(false);
+            string responseString = await _textHelper.GetTextCompletionAsync(inputString).ConfigureAwait(false);
 
             response.WriteString(JsonSerializer.Serialize(responseString));
 
@@ -50,7 +50,7 @@ namespace AOAI.Solution.Functions
             if(input is not null && input.IsValid())
             {
                 string prompt = PromptHelper.GetPromptForEvaluation(input.Question, input.Answer, input.Fullmarks);
-                string responseString = await textHelper.GetTextCompletionAsync(prompt).ConfigureAwait(false);
+                string responseString = await _textHelper.GetTextCompletionAsync(prompt).ConfigureAwait(false);
                 response.WriteString(JsonSerializer.Serialize(responseString));
             }
             else
